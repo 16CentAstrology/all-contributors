@@ -21,11 +21,12 @@ These are the keys you can specify:
 | `files`                          | Array of files to update.                                                                           | Default: `['README.md']`                                                                                    |
 | `imageSize`                      | Size (in px) of the user's avatar.                                                                  | Default: `100`                                                                                              |
 | `commit`                         | Auto-commit badge when adding contributors.                                                         | Default: `false`                                                                                           |
-| `commitConvention`               | Commit convention ([`angular`](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines), [`atom`](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#git-commit-messages), [`ember`](https://guides.emberjs.com/v1.10.0/contributing/#toc_commits), [`eslint`](https://eslint.org/docs/1.0.0/developer-guide/contributing#step-2-make-your-changes), [`jshint`](https://jshint.com/contribute/) or [`gitmoji`](https://gitmoji.carloscuesta.me/)).                                                         | Default: `angular`                                                                                           |
+| `commitConvention`               | Commit convention ([`angular`](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines), [`atom`](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#git-commit-messages), [`ember`](https://guides.emberjs.com/v1.10.0/contributing/#toc_commits), [`eslint`](https://eslint.org/docs/1.0.0/developer-guide/contributing#step-2-make-your-changes), [`jshint`](https://jshint.com/contribute/), [`gitmoji`](https://gitmoji.carloscuesta.me/), or `none`).                                                         | Default: `angular`                                                                                           |
 | `contributorsPerLine`            | Maximum number of columns for the contributors table.                                               | Default: `7`                                                                                                |
 | `contributorsSortAlphabetically` | `true`: Sort alphabetically. `false`: Display in order of addition.                       | Default: `false`                                                                                            |
 | `badgeTemplate`                  | Define your own lodash template to generate the badge.                                              | |
 | `contributorTemplate`            | Define your own lodash template to generate the contributor.                                        | |
+| `wrapperTemplate`                | Define your own lodash template to wrap the list of contributors                                    | |
 | `types`                          | Specify custom symbols or link templates for contribution types. Can override the documented types. | |
 | `linkToUsage`                    | Adds a footer with link to usage (either `true` or `false`)                                         | Default: `true` |
 | `skipCi`                         | Makes the CI ignore the commit. (either `true` or `false`)                                          | Default: `true` |
@@ -42,8 +43,9 @@ These are the keys you can specify:
   "commit": false,
   "contributorsPerLine": 7,
   "contributorsSortAlphabetically": false,
-  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)",
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/github/all-contributors/<%= projectOwner %>/<%= projectName %>?color=ee8449&style=flat-square)](#contributors)",
   "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>",
+  "wrapperTemplate": "\n<table>\n  <tbody><%= bodyContent %>  </tbody>\n<%= tableFooterContent %></table>\n\n",
   "types": {
     "custom": {
       "symbol": "🔭",
